@@ -91,9 +91,9 @@ public class Dinosaur {
                 ", id='" + id + '\'' +
                 ", registered=" + registered +
                 ", diet=" + diet +
-                ", length=" + length +
-                ", height=" + height +
-                ", weight=" + weight +
+                ", length=" + length + "m" +
+                ", height=" + height + "m" +
+                ", weight=" + weight + "kg" +
                 '}';
     }
 }

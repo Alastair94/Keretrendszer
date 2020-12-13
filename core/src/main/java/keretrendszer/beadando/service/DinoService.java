@@ -13,8 +13,8 @@ public interface DinoService {
     Collection<Dinosaur> getAllDino();
     Collection<Dinosaur> getAllDinoByDiet(Diet diet);
     Dinosaur getDinoById(String id) throws DinoNotFound;
-    void updateDino(Dinosaur dino);
-    void removeDino(Dinosaur dino);
+    void updateDino(Dinosaur dino) throws DinoNotFound;
+    void removeDino(Dinosaur dino) throws DinoNotFound;
     double avgWeight();
     Map<Diet, Double> avgWeightByDiet(Diet diet);
 

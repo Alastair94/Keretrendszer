@@ -36,11 +36,11 @@ public class DinoServiceImpl implements DinoService {
         return dinoDAO.readDino(id);
     }
 
-    public void updateDino(Dinosaur dino) {
+    public void updateDino(Dinosaur dino) throws DinoNotFound {
         dinoDAO.updateDino(dino);
     }
 
-    public void removeDino(Dinosaur dino) {
+    public void removeDino(Dinosaur dino) throws DinoNotFound {
         dinoDAO.deleteDino(dino);
     }
 
