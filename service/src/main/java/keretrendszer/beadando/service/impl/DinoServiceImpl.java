@@ -1,6 +1,8 @@
 package keretrendszer.beadando.service.impl;
 
 import keretrendszer.beadando.dao.DinoDAO;
+import keretrendszer.beadando.exceptions.DinoAlreadyInSystem;
+import keretrendszer.beadando.exceptions.DinoNotFound;
 import keretrendszer.beadando.model.Diet;
 import keretrendszer.beadando.model.Dinosaur;
 import keretrendszer.beadando.service.DinoService;
@@ -16,7 +18,7 @@ public class DinoServiceImpl implements DinoService {
         this.dinoDAO = dinoDAO;
     }
 
-    public void addDino(Dinosaur dino) {
+    public void addDino(Dinosaur dino) throws DinoAlreadyInSystem {
         dinoDAO.createDino(dino);
     }
 
@@ -30,7 +32,7 @@ public class DinoServiceImpl implements DinoService {
         return result;
     }
 
-    public Dinosaur getDinoById(String id) {
+    public Dinosaur getDinoById(String id) throws DinoNotFound {
         return dinoDAO.readDino(id);
     }
 

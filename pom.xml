@@ -11,6 +11,8 @@
     <modules>
         <module>core</module>
         <module>service</module>
+        <module>dao_mongo</module>
+        <module>console</module>
     </modules>
 
 
