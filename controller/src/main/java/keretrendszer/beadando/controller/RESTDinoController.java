@@ -9,6 +9,7 @@ import keretrendszer.beadando.service.DinoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -63,12 +64,19 @@ public class RESTDinoController {
         return mav;
     }
 
-    @PostMapping(value = "addDino", consumes = MediaType.APPLICATION_JSON_VALUE, produces = "application/json;charset=utf-8")
-    public ModelAndView addDolgozo(@RequestBody Dinosaur dino) throws DinoAlreadyInSystem, WrongRegisterDate {
-        ModelAndView mav = new ModelAndView("dinolist.jsp");
+    @PostMapping(value = "addDino")
+    public ModelAndView addDino(@ModelAttribute("dino") Dinosaur dino) throws DinoAlreadyInSystem, WrongRegisterDate {
+        ModelAndView mav = new ModelAndView("dinodetails.jsp");
         dino.setRegistered(LocalDate.now());
         dinoService.addDino(dino);
         return mav;
+    }
+
+    @PostMapping(value = "addDinoJSON", consumes = MediaType.APPLICATION_JSON_VALUE, produces = "application/json;charset=utf-8")
+    public String addDinoJSON(@RequestBody Dinosaur dino) throws DinoAlreadyInSystem, WrongRegisterDate {
+        dino.setRegistered(LocalDate.now());
+        dinoService.addDino(dino);
+        return "New dino added to database: " + dino.getId();
     }
 
     @ExceptionHandler(DinoAlreadyInSystem.class)

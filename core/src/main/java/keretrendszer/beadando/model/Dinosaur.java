@@ -1,6 +1,7 @@
 package keretrendszer.beadando.model;
 
 import keretrendszer.beadando.exceptions.*;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -9,6 +10,7 @@ import java.util.UUID;
 public class Dinosaur {
     private String name;
     private String id;
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private LocalDate registered;
     private Diet diet;
     private double length;
@@ -60,7 +62,7 @@ public class Dinosaur {
     }
 
     public void setLength(double length) throws NotZeroLength {
-        if(length < 0)
+        if(length <= 0)
             throw new NotZeroLength("Length must be bigger than 0!" );
         this.length = length;
     }
@@ -70,7 +72,7 @@ public class Dinosaur {
     }
 
     public void setHeight(double height) throws NotZeroHeight {
-        if(height < 0)
+        if(height <= 0)
             throw new NotZeroHeight("Height must be bigger than 0!" );
         this.height = height;
     }
@@ -80,7 +82,7 @@ public class Dinosaur {
     }
 
     public void setWeight(int weight) throws NotZeroWeight {
-        if(weight < 0)
+        if(weight <= 0)
             throw new NotZeroWeight("Weight must be bigger than 0!" );
         this.weight = weight;
     }
