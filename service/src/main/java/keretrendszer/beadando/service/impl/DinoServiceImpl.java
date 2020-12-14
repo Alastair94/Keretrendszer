@@ -56,4 +56,8 @@ public class DinoServiceImpl implements DinoService {
     public Map<Diet, Double> avgWeightByDiet(Diet diet) {
         return null;
     }
+
+    public Collection<Dinosaur> getAllDinoMinWeight(int min) {
+        return getAllDino().stream().filter(d -> d.getWeight() >= min).collect(Collectors.<Dinosaur>toList());
+    }
 }

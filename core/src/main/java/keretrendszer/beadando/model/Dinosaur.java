@@ -2,13 +2,14 @@ package keretrendszer.beadando.model;
 
 import keretrendszer.beadando.exceptions.*;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
 public class Dinosaur {
     private String name;
     private String id;
-    private LocalDateTime registered;
+    private LocalDate registered;
     private Diet diet;
     private double length;
     private double height;
@@ -36,14 +37,14 @@ public class Dinosaur {
         this.id = id;
     }
 
-    public LocalDateTime getRegistered() {
+    public LocalDate getRegistered() {
         return registered;
     }
 
-    public void setRegistered(LocalDateTime registered) throws WrongRegisterDate {
-        if(registered.isAfter(LocalDateTime.now()))
+    public void setRegistered(LocalDate registered) throws WrongRegisterDate {
+        if(registered.isAfter(LocalDate.now()))
             throw new WrongRegisterDate("Could not have registered in future!");
-        this.registered = registered;
+        this.registered = LocalDate.now();
     }
 
     public Diet getDiet() {

@@ -18,4 +18,6 @@ public interface DinoService {
     double avgWeight();
     Map<Diet, Double> avgWeightByDiet(Diet diet);
 
+    Collection<Dinosaur> getAllDinoMinWeight(int min);
+
 }
