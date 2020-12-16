@@ -68,7 +68,6 @@ public class DinoDAOMongo implements DinoDAO {
 
     @Override
     public void deleteDino(Dinosaur dino) throws DinoNotFound {
-        //readDino(dino.getId());
         collection.remove(DinoAdapter.dinoToDBObject(dino));
     }
 }

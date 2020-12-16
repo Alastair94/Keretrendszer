@@ -12,7 +12,6 @@
         <module>core</module>
         <module>service</module>
         <module>dao_mongo</module>
-        <module>console</module>
         <module>controller</module>
         <module>web</module>
     </modules>

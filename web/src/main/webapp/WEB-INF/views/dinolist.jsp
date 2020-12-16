@@ -15,9 +15,37 @@
 <body>
 <c:if test="${!empty dinos}">
     <table frame="border" rules="all">
-        <tr><th>ID</th><th>Name</th><th>Diet</th><th>Length</th><th>Height</th><th>Weight</th><th>Registered on</th></tr>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Diet</th>
+            <th>Length</th>
+            <th>Height</th>
+            <th>Weight</th>
+            <th>Registered on</th>
+            <th>Delete</th>
+            <th>Update</th>
+        </tr>
         <c:forEach items="${dinos}" var="dino">
-            <tr><td><a href="${pageContext.servletContext.contextPath}/dino/${dino.id}">${dino.id}</a></td><td>${dino.name}</td><td>${dino.diet}</td><td>${dino.length}</td><td>${dino.height}</td><td>${dino.weight}</td><td>${dino.registered}</td></tr>
+            <tr>
+                <td><a href="${pageContext.servletContext.contextPath}/dino/${dino.id}">${dino.id}</a></td>
+                <td>${dino.name}</td>
+                <td>${dino.diet}</td>
+                <td>${dino.length}</td>
+                <td>${dino.height}</td>
+                <td>${dino.weight}</td>
+                <td>${dino.registered}</td>
+                <td>
+                    <form action="${pageContext.servletContext.contextPath}/delete/${dino.id}">
+                        <input type="submit" value="X">
+                    </form>
+                </td>
+                <td>
+                    <form action="${pageContext.servletContext.contextPath}/edit/${dino.id}">
+                        <input type="submit" value="Update">
+                    </form>
+                </td>
+            </tr>
         </c:forEach>
     </table>
 </c:if>
